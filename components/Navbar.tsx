@@ -10,9 +10,12 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { theme, setTheme } = useTheme();
 
-  // Avoid hydration mismatch by waiting until mounted
+  // Avoid hydration mismatch by waiting until mounted.  React warns about
+  // synchronous setState inside effects, so schedule the update on the next
+  // animation frame instead.
   useEffect(() => {
-    setMounted(true);
+    const handle = window.requestAnimationFrame(() => setMounted(true));
+    return () => window.cancelAnimationFrame(handle);
   }, []);
 
   const navLinks = [
@@ -25,7 +28,7 @@ const Navbar = () => {
   if (!mounted) return null;
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 print:hidden">
+    <nav className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 print:hidden">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Brand/Logo */}
         <div className="text-xl font-bold tracking-tight">
@@ -44,7 +47,7 @@ const Navbar = () => {
             </a>
           ))}
           
-          <div className="flex items-center pl-4 border-l space-x-2">
+          <div className="flex items-center pl-4 space-x-2">
             {/* Theme Toggle */}
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}

@@ -10,7 +10,7 @@ const Projects = () => {
   const featuredProjects = resumeData.projects.filter(p => p.featured);
 
   return (
-    <section id="projects" className="py-20 border-t border-muted">
+    <section id="projects" className="py-20 overflow-hidden">
       <div className="container mx-auto px-4 max-w-5xl">
         <div className="mb-10 space-y-2">
           <h2 className="text-3xl font-bold tracking-tight flex items-center gap-2">

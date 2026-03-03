@@ -1,68 +1,37 @@
 @import "tailwindcss";
 
-/* 1. Tell Tailwind to use these CSS variables for our components */
-@theme {
-  --color-background: var(--bg-color);
-  --color-foreground: var(--fg-color);
+/* custom properties can be defined on :root or in light/dark selectors
+   – the `@theme` at-rule is not valid and caused a warning, so it was removed.
+   duplicating the vars below if you still need them is fine. */
 
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-}
-
-/* 2. Configure the dark mode class for our Next-Themes toggle */
-@custom-variant dark (&:is(.dark *));
-
-/* 3. Light Mode Colors (Clean, Corporate-Friendly) */
 :root {
-  --bg-color: #ffffff;
-  --fg-color: #0f172a;
-
-  --primary: #0f172a;
-  --primary-foreground: #f8fafc;
-
+  /* Light Mode: A very clean, medical-grade cool gray */
+  --background: #f8fafc; 
+  --foreground: #020617;
   --muted: #f1f5f9;
   --muted-foreground: #64748b;
-
-  --accent: #e2e8f0;
-  --accent-foreground: #0f172a;
+  --pop: #3b82f6; /* Electric Blue */
 }
 
-/* 4. Dark Mode Colors (Modern, Dev-Focused) */
 .dark {
-  --bg-color: #020617;
-  --fg-color: #f8fafc;
-
-  --primary: #f8fafc;
-  --primary-foreground: #0f172a;
-
-  --muted: #1e293b;
+  /* Dark Mode: Deep Obsidian with a hint of navy for depth */
+  --background: #020617; 
+  --foreground: #f8fafc;
+  --muted: #0f172a;
   --muted-foreground: #94a3b8;
-
-  --accent: #1e293b;
-  --accent-foreground: #f8fafc;
+  --pop: #3b82f6;
 }
 
-/* 5. The Print Engine (For your PDF Resume) */
-@media print {
-  nav, footer, .no-print, button {
-    display: none !important;
-  }
-  body {
-    background: white !important;
-    color: black !important;
-    font-size: 12pt;
-  }
-  a:after {
-    content: none !important;
-  }
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  background-image: radial-gradient(circle at 2px 2px, var(--muted) 1px, transparent 0);
+  background-size: 40px 40px; /* Subtle dot grid for an engineering feel */
 }
 
-html {
-  scroll-behavior: smooth;
+/* Glassmorphism for a clean, minimalist feel */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }

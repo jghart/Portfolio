@@ -2,11 +2,11 @@
 
 import React from "react";
 import { resumeData } from "@/data/resumeData";
-import { MapPin, ArrowRight, Github, Linkedin } from "lucide-react";
-import { motion } from "framer-motion";
+import { ArrowRight, Github, Linkedin } from "lucide-react";
+import { motion, Variants} from "framer-motion";
 
 // Animation physics for the Hero section
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -14,16 +14,21 @@ const containerVariants = {
   }
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 };
 
 const Hero = () => {
-  const { name, label, location, profiles } = resumeData.basics;
+  const { name, label, profiles } = resumeData.basics;
 
   return (
-    <section id="hero" className="flex min-h-[70vh] flex-col items-center justify-center py-20 text-center md:py-32 overflow-hidden">
+    <section
+      id="hero"
+      className="relative flex min-h-[70vh] flex-col items-center justify-center py-20 text-center md:py-32 overflow-hidden bg-background/90"
+    >
+      {/* subtle tint to separate text from whatever background might appear */}
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-background/90 via-background/70 to-pop/10 mix-blend-multiply" />
       <motion.div 
         className="space-y-4"
         variants={containerVariants}
@@ -31,21 +36,29 @@ const Hero = () => {
         whileInView="visible"
         viewport={{ once: false, amount: 0.3 }} // Animates every time you scroll to the top
       >
-        {/* Local Badge */}
-        <motion.div variants={itemVariants} className="mx-auto flex w-fit items-center space-x-2 rounded-full border bg-muted/50 px-3 py-1 text-xs font-medium text-muted-foreground transition-all hover:bg-muted">
-          <MapPin size={12} className="text-primary" />
-          <span>Available for roles in {location}</span>
-        </motion.div>
-
-        {/* Headline */}
-        <motion.h1 variants={itemVariants} className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-          Hi,I am <span className="text-primary">{name}</span>
-        </motion.h1>
+        <div className="relative">
+            {/* Subtle background glow for the name */}
+            <div className="absolute -inset-10 bg-pop/10 blur-[100px] rounded-full opacity-50" />
+                
+            <motion.h1 
+                variants={itemVariants} 
+                className="relative text-5xl font-black tracking-tighter sm:text-7xl md:text-8xl lg:text-9xl uppercase"
+            >
+                Hi, I am<br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-pop to-blue-400">
+                {name}
+                </span>
+            </motion.h1>
+        </div>
         
         {/* Summary */}
-        <motion.p variants={itemVariants} className="mx-auto max-w-[700px] text-lg text-muted-foreground sm:text-xl">
-          A <span className="font-semibold text-foreground">{label}</span> building scalable, 
-          AI-integrated web applications with a focus on modern user experiences.
+        <motion.p
+          variants={itemVariants}
+          className="mx-auto max-w-[700px] text-lg text-foreground drop-shadow-sm sm:text-xl"
+        >
+          A <span className="font-semibold text-foreground">{label}</span> building
+          scalable, AI-integrated web applications with a focus on modern user
+          experiences.
         </motion.p>
 
         {/* CTAs */}

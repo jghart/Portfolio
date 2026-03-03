@@ -3,7 +3,7 @@
 import React from "react";
 import { resumeData } from "@/data/resumeData";
 import { Wrench } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 // Importing the specific monochromatic SVG icons for your tech stack
 import { 
   SiReact, SiNextdotjs, SiTypescript, SiTailwindcss,
@@ -30,15 +30,15 @@ const iconMap: Record<string, React.ReactNode> = {
 };
 
 // 2. Framer Motion Animation Variants
-const containerVariant = {
+const containerVariant: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.1 } // This creates the 1-by-1 fade-in effect
+    transition: { staggerChildren: 0.1 } 
   }
 };
 
-const itemVariant = {
+const itemVariant: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
 };
@@ -47,7 +47,7 @@ const Skills = () => {
   const { skills } = resumeData;
 
   return (
-    <section id="skills" className="py-20 border-t border-muted bg-muted/10 overflow-hidden">
+    <section id="skills" className="py-20 overflow-hidden">
       <div className="container mx-auto px-4 max-w-4xl">
         <motion.h2 
           initial={{ opacity: 0, x: -20 }}
