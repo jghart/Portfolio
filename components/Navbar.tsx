@@ -1,114 +1,87 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { useTheme } from "next-themes";
-import { Menu, X, Sun, Moon, Printer } from "lucide-react";
-import { resumeData } from "@/data/resumeData";
+import Link from "next/link";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
 
-const Navbar = () => {
-  const [mounted, setMounted] = useState(false);
+const navItems = [
+  { label: "About", href: "#about" },
+  { label: "Projects", href: "#projects" },
+  { label: "Skills", href: "#skills" },
+  { label: "Contact", href: "#contact" },
+];
+
+export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
-
-  // Avoid hydration mismatch by waiting until mounted.  React warns about
-  // synchronous setState inside effects, so schedule the update on the next
-  // animation frame instead.
-  useEffect(() => {
-    const handle = window.requestAnimationFrame(() => setMounted(true));
-    return () => window.cancelAnimationFrame(handle);
-  }, []);
-
-  const navLinks = [
-    { name: "About", href: "#about" },
-    { name: "Skills", href: "#skills" },
-    { name: "Projects", href: "#projects" },
-    { name: "Contact", href: "#contact" },
-  ];
-
-  if (!mounted) return null;
 
   return (
-    <nav className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 print:hidden">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        {/* Brand/Logo */}
-        <div className="text-xl font-bold tracking-tight">
-          <a href="#">{resumeData.basics.name}</a>
-        </div>
+    <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur">
+      <div className="container mx-auto flex items-center justify-between px-6 py-4">
+        <Link
+          href="/"
+          className="text-lg font-semibold tracking-tight transition hover:text-primary"
+        >
+          Joe Ghart
+        </Link>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-6 text-sm font-medium">
-          {navLinks.map((link) => (
+        <nav className="hidden items-center gap-8 md:flex">
+          {navItems.map((item) => (
             <a
-              key={link.name}
-              href={link.href}
-              className="transition-colors hover:text-primary/80 text-foreground/60"
+              key={item.href}
+              href={item.href}
+              className="text-sm font-medium text-muted-foreground transition hover:text-foreground"
             >
-              {link.name}
+              {item.label}
             </a>
           ))}
-          
-          <div className="flex items-center pl-4 space-x-2">
-            {/* Theme Toggle */}
-            <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-md hover:bg-accent"
-              aria-label="Toggle Theme"
-            >
-              {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
 
-            {/* Print Button */}
-            <button
-              onClick={() => window.print()}
-              className="flex items-center space-x-1 px-3 py-1.5 bg-primary text-primary-foreground rounded-md text-xs hover:bg-primary/90 transition-all"
-            >
-              <Printer size={14} />
-              <span>Resume</span>
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Toggle */}
-        <div className="flex items-center space-x-4 md:hidden">
-          <button
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="p-2"
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-xl bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition hover:opacity-90"
           >
-            {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
-          <button onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
+            Resume
+          </a>
+        </nav>
+
+        <button
+          type="button"
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isOpen}
+          onClick={() => setIsOpen((prev) => !prev)}
+          className="rounded-xl border border-border p-2 transition hover:bg-muted md:hidden"
+        >
+          {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
       </div>
 
-      {/* Mobile Menu Overlay */}
       {isOpen && (
-        <div className="md:hidden border-t bg-background px-4 py-6 space-y-4 animate-in slide-in-from-top">
-          {navLinks.map((link) => (
+        <div className="border-t border-border bg-background md:hidden">
+          <nav className="container mx-auto flex flex-col px-6 py-4">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={() => setIsOpen(false)}
+                className="py-3 text-sm font-medium text-muted-foreground transition hover:text-foreground"
+              >
+                {item.label}
+              </a>
+            ))}
+
             <a
-              key={link.name}
-              href={link.href}
+              href="/resume.pdf"
+              target="_blank"
+              rel="noreferrer"
               onClick={() => setIsOpen(false)}
-              className="block text-lg font-medium py-2 border-b border-accent"
+              className="mt-3 inline-flex w-fit rounded-xl bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition hover:opacity-90"
             >
-              {link.name}
+              Resume
             </a>
-          ))}
-          <button
-            onClick={() => {
-              window.print();
-              setIsOpen(false);
-            }}
-            className="w-full flex items-center justify-center space-x-2 py-3 bg-primary text-primary-foreground rounded-md"
-          >
-            <Printer size={18} />
-            <span>Print Resume (PDF)</span>
-          </button>
+          </nav>
         </div>
       )}
-    </nav>
+    </header>
   );
-};
-
-export default Navbar;
+}

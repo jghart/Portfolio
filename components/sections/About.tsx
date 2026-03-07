@@ -1,45 +1,38 @@
-"use client";
-
-import React from "react";
 import { resumeData } from "@/data/resumeData";
-import { Code2 } from "lucide-react";
-import { motion } from "framer-motion";
 
-const About = () => {
-  const { summary } = resumeData.basics;
-
+export default function About() {
   return (
-    <section id="about" className="py-20 overflow-hidden">
-      <div className="container mx-auto px-4 max-w-4xl">
-        
-        {/* Section Title sliding in from the left */}
-        <motion.h2 
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: false, amount: 0.5 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="text-3xl font-bold tracking-tight mb-8 flex items-center gap-2"
-        >
-          <Code2 className="text-primary" />
-          About Me
-        </motion.h2>
-        
-        {/* previously a 3‑column grid; simplified to a single block since the
-            graduation card was removed */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.4 }}
-          transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-          className="space-y-4"
-        >
-          <p className="text-lg leading-relaxed text-muted-foreground">
-            {summary}
-          </p>
-        </motion.div>
+    <section id="about" className="py-20 sm:py-24">
+      <div className="container mx-auto px-6">
+        <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-start">
+          <div>
+            <p className="text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground">
+              About Me
+            </p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+              Building practical software with clean design and solid backend
+              logic
+            </h2>
+          </div>
+
+          <div className="space-y-5 text-base leading-7 text-muted-foreground">
+            <p>{resumeData.basics.summary}</p>
+
+            <p>
+              My work focuses on building applications that are responsive,
+              maintainable, and useful in real-world scenarios. I enjoy working
+              across both frontend and backend layers, from creating polished
+              interfaces to structuring APIs, databases, and business logic.
+            </p>
+
+            <p>
+              I am especially interested in opportunities where I can contribute
+              to full-stack development, backend systems, and business-focused
+              software solutions while continuing to grow as a developer.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );
-};
-
-export default About;
+}

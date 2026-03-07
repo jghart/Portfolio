@@ -1,16 +1,16 @@
-import { Github, Linkedin, Mail, MapPin } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 
 export const resumeData = {
   basics: {
     name: "Joe Ghart",
     title: "Full-Stack Developer",
     description:
-      "Full-Stack Developer focused on building responsive web applications, backend systems, and practical business solutions using React, Next.js, Laravel, Java, and SQL.",
+      "I build responsive web applications, backend systems, and practical business solutions using React, Next.js, Laravel, Java, and SQL.",
     email: "your-email@example.com",
     location: "Toronto, Ontario, Canada",
-    website: "https://your-real-portfolio-url.com",
+    website: "https://your-portfolio-url.com",
     summary:
-      "I am a Full-Stack Developer with experience building modern web applications and backend-driven systems. My work includes responsive frontend development, REST API integration, database design, and full project implementation using technologies such as React, Next.js, Laravel, Java, Spring Boot, and SQL. I enjoy creating clean, efficient, and user-focused solutions that solve real business problems.",
+      "I am a Full-Stack Developer focused on building clean, reliable, and user-friendly software. My experience includes frontend development, REST API integration, database design, and backend-driven applications using technologies such as React, Next.js, Laravel, Java, Spring Boot, and SQL. I enjoy creating practical solutions that solve real business problems and deliver a polished user experience.",
     profiles: [
       {
         network: "GitHub",
@@ -26,7 +26,7 @@ export const resumeData = {
       },
       {
         network: "Email",
-        username: "appiahjoe88@gmail.com",
+        username: "your-email@example.com",
         url: "mailto:your-email@example.com",
         icon: Mail,
       },
@@ -36,9 +36,9 @@ export const resumeData = {
   education: [
     {
       institution: "Humber Polytechnic",
-      area: "Software Development",
+      area: "Computer Programming / Software Development",
       studyType: "Diploma",
-      startDate: "2024",
+      startDate: "2023",
       endDate: "2026",
     },
   ],
@@ -46,11 +46,11 @@ export const resumeData = {
   skills: [
     {
       category: "Frontend",
-      items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "JavaScript"],
+      items: ["React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS"],
     },
     {
       category: "Backend",
-      items: ["Laravel", "Java", "Spring Boot", "REST APIs", "PHP"],
+      items: ["Laravel", "Java", "Spring Boot", "PHP", "REST APIs"],
     },
     {
       category: "Database",
@@ -66,25 +66,25 @@ export const resumeData = {
     {
       title: "Portfolio Website",
       description:
-        "A modern personal portfolio built with Next.js, TypeScript, and Tailwind CSS to showcase projects, technical skills, and contact information in a clean recruiter-friendly layout.",
+        "A modern personal portfolio built to showcase projects, technical skills, and contact information in a clean and recruiter-friendly layout.",
       highlights: [
-        "Built with App Router and reusable UI components",
-        "Responsive design optimized for desktop and mobile",
-        "Improved presentation of projects and technical profile",
+        "Built with reusable components and responsive layouts",
+        "Designed for strong readability and polished presentation",
+        "Focused on performance, clarity, and modern UI structure",
       ],
       techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
       github: "https://github.com/jghart/Portfolio",
-      demo: "https://your-live-site-url.com",
+      demo: "https://your-live-portfolio-url.com",
       image: "/images/portfolio.png",
     },
     {
       title: "Student Program Management System",
       description:
-        "A Laravel-based system for managing students and programs with relational models, migrations, seeders, and structured CRUD operations.",
+        "A Laravel-based academic management application for handling students, programs, relationships, and structured CRUD operations.",
       highlights: [
-        "Designed Student and Program models with relationships",
-        "Implemented database migrations and seeders",
-        "Built maintainable backend structure for academic data management",
+        "Designed Student and Program models with proper relationships",
+        "Implemented migrations and seeders for database setup",
+        "Built a structured backend workflow for managing academic records",
       ],
       techStack: ["Laravel", "PHP", "MySQL", "Blade"],
       github: "https://github.com/your-real-repo",
@@ -94,11 +94,11 @@ export const resumeData = {
     {
       title: "Vehicle Maintenance & Service Management System",
       description:
-        "A business-oriented service management platform for handling customer records, vehicle servicing, scheduling, invoicing, payments, inventory, and reporting.",
+        "A business-oriented platform for managing customer records, vehicle servicing, scheduling, invoicing, payments, and reporting.",
       highlights: [
         "Designed modules for customer, vehicle, and service management",
-        "Integrated backend APIs and database workflows",
-        "Focused on real-world business process automation",
+        "Integrated backend APIs with database workflows",
+        "Focused on real-world business process automation and usability",
       ],
       techStack: ["JavaFX", "Spring Boot", "Oracle", "Spring Security"],
       github: "https://github.com/your-real-repo",

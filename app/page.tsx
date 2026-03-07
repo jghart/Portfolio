@@ -4,27 +4,31 @@ import About from "@/components/sections/About";
 import Skills from "@/components/sections/Skills";
 import Projects from "@/components/sections/Projects";
 import Contact from "@/components/sections/Contact";
-import PrintView from "@/components/resume/PrintView";
 import Footer from "@/components/sections/Footer";
+import PrintView from "@/components/resume/PrintView";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background text-foreground selection:bg-primary/30">
-      {/* The Navigation */}
-      <Navbar />
-
-      {/* The Web Portfolio View (Hidden during printing) */}
+    <>
+      {/* Web Portfolio View */}
       <div className="print:hidden">
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Contact />
+        <Navbar />
+
+        <main>
+          <Hero />
+          <About />
+          <Skills />
+          <Projects />
+          <Contact />
+        </main>
+
         <Footer />
       </div>
 
-      {/* The Print-Friendly Resume View (Hidden during web browsing) */}
-      <PrintView />
-    </main>
+      {/* Print-Friendly Resume View */}
+      <div className="hidden print:block">
+        <PrintView />
+      </div>
+    </>
   );
 }

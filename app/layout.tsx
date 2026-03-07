@@ -4,22 +4,39 @@ import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { resumeData } from "@/data/resumeData";
 
-// Using Inter font for a clean, modern, highly readable UI
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
 
-// SEO Metadata optimized for your local market
 export const metadata: Metadata = {
-  title: `${resumeData.basics.name} | ${resumeData.basics.label}`,
+  title: `${resumeData.basics.name} | ${resumeData.basics.title}`,
   description: resumeData.basics.summary,
-  keywords: ["Full Stack Developer", "React", "Next.js", "Toronto", "AI Integrations", "Software Engineer"],
+  keywords: [
+    "Full-Stack Developer",
+    "React",
+    "Next.js",
+    "Laravel",
+    "Java",
+    "Spring Boot",
+    "SQL",
+    "Toronto Developer",
+    "Portfolio",
+  ],
   authors: [{ name: resumeData.basics.name }],
+  metadataBase: new URL(resumeData.basics.website),
   openGraph: {
     type: "website",
     locale: "en_CA",
     url: resumeData.basics.website,
-    title: `${resumeData.basics.name} | ${resumeData.basics.label}`,
+    title: `${resumeData.basics.name} | ${resumeData.basics.title}`,
     description: resumeData.basics.summary,
     siteName: `${resumeData.basics.name} Portfolio`,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${resumeData.basics.name} | ${resumeData.basics.title}`,
+    description: resumeData.basics.summary,
   },
 };
 
@@ -29,8 +46,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="scroll-smooth">
-      <body className={`${inter.className} antialiased`}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={inter.className}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
