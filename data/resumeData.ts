@@ -10,7 +10,7 @@ export const resumeData = {
     location: "Toronto, Ontario, Canada",
     website: "https://your-portfolio-url.com",
     summary:
-      "I am a Full-Stack Developer focused on building clean, reliable, and user-friendly software. My experience includes frontend development, REST API integration, database design, and backend-driven applications using technologies such as React, Next.js, Laravel, Java, Spring Boot, and SQL. I enjoy creating practical solutions that solve real business problems and deliver a polished user experience.",
+           "I am a Full-Stack Developer focused on building clean, reliable, and user-friendly software. My experience includes frontend development, REST API integration, database design, and backend-driven applications using technologies such as React, Next.js, Laravel, Java, Spring Boot, and SQL. I enjoy creating practical solutions that solve real business problems and deliver a polished user experience.",
     profiles: [
       {
         network: "GitHub",
