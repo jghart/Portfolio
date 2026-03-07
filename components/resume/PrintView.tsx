@@ -1,81 +1,128 @@
-import React from "react";
 import { resumeData } from "@/data/resumeData";
 
-const PrintView = () => {
+export default function PrintView() {
   const { basics, skills, projects, education } = resumeData;
 
+  const linkedin = basics.profiles.find(
+    (profile) => profile.network === "LinkedIn"
+  );
+
+  const github = basics.profiles.find(
+    (profile) => profile.network === "GitHub"
+  );
+
   return (
-    <div className="hidden print:block bg-white text-black p-8 max-w-4xl mx-auto font-sans text-sm">
-      {/* Header section */}
-      <header className="border-b-2 border-black pb-4 mb-6">
-        <h1 className="text-4xl font-bold uppercase tracking-tight mb-1">{basics.name}</h1>
-        <h2 className="text-xl font-medium text-gray-700 mb-3">{basics.label}</h2>
-        <div className="flex flex-wrap gap-x-4 text-xs text-gray-600">
+    <main className="mx-auto max-w-4xl bg-white px-8 py-10 text-black print:px-0 print:py-0">
+      <header className="border-b border-gray-300 pb-6">
+        <h1 className="text-3xl font-bold">{basics.name}</h1>
+        <p className="mt-2 text-lg">{basics.title}</p>
+
+        <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm text-gray-700">
           <span>{basics.email}</span>
-          <span>•</span>
-          <span>{basics.phone}</span>
-          <span>•</span>
           <span>{basics.location}</span>
-          <span>•</span>
-          <span>{basics.profiles.find(p => p.network === 'LinkedIn')?.url.replace('https://', '')}</span>
+          {linkedin && <span>{linkedin.url.replace("https://", "")}</span>}
+          {github && <span>{github.url.replace("https://", "")}</span>}
         </div>
       </header>
 
-      {/* Professional Summary */}
-      <section className="mb-6">
-        <h3 className="text-lg font-bold uppercase border-b border-gray-300 mb-2 pb-1">Professional Summary</h3>
-        <p className="leading-relaxed text-gray-800">{basics.summary}</p>
+      <section className="mt-8">
+        <h2 className="border-b border-gray-200 pb-2 text-xl font-semibold">
+          Professional Summary
+        </h2>
+        <p className="mt-3 text-sm leading-6 text-gray-800">{basics.summary}</p>
       </section>
 
-      {/* Technical Skills */}
-      <section className="mb-6">
-        <h3 className="text-lg font-bold uppercase border-b border-gray-300 mb-2 pb-1">Technical Skills</h3>
-        <div className="grid grid-cols-1 gap-2">
-          {skills.map((skillGroup, index) => (
-            <div key={index} className="flex">
-              <span className="font-bold w-32 shrink-0">{skillGroup.category}:</span>
-              <span className="text-gray-800">{skillGroup.items.join(", ")}</span>
-            </div>
-          ))}
-        </div>
-      </section>
+      <section className="mt-8">
+        <h2 className="border-b border-gray-200 pb-2 text-xl font-semibold">
+          Technical Skills
+        </h2>
 
-      {/* Featured Projects */}
-      <section className="mb-6">
-        <h3 className="text-lg font-bold uppercase border-b border-gray-300 mb-2 pb-1">Featured Projects</h3>
-        <div className="space-y-4">
-          {projects.map((project, index) => (
-            <div key={index}>
-              <div className="flex justify-between items-baseline mb-1">
-                <h4 className="font-bold text-base">{project.title}</h4>
-                {project.link !== "#" && (
-                  <span className="text-xs text-gray-500">{project.link.replace('https://', '')}</span>
-                )}
-              </div>
-              <p className="text-gray-800 mb-1">{project.description}</p>
-              <p className="text-xs text-gray-600 font-medium">
-                <span className="font-bold text-black">Tech Stack:</span> {project.tech.join(", ")}
+        <div className="mt-4 space-y-3">
+          {skills.map((skillGroup) => (
+            <div key={skillGroup.category}>
+              <h3 className="text-sm font-semibold">{skillGroup.category}</h3>
+              <p className="mt-1 text-sm text-gray-800">
+                {skillGroup.items.join(", ")}
               </p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Education */}
-      <section>
-        <h3 className="text-lg font-bold uppercase border-b border-gray-300 mb-2 pb-1">Education</h3>
-        {education.map((edu, index) => (
-          <div key={index} className="flex justify-between items-baseline">
-            <div>
-              <h4 className="font-bold">{edu.studyType} in {edu.area}</h4>
-              <p className="text-gray-800">{edu.institution}, {edu.location}</p>
-            </div>
-            <span className="text-sm font-medium text-gray-600">Expected: {edu.endDate}</span>
-          </div>
-        ))}
-      </section>
-    </div>
-  );
-};
+      <section className="mt-8">
+        <h2 className="border-b border-gray-200 pb-2 text-xl font-semibold">
+          Featured Projects
+        </h2>
 
-export default PrintView;
+        <div className="mt-4 space-y-6">
+          {projects.map((project) => (
+            <article key={project.title}>
+              <div className="flex flex-wrap items-baseline justify-between gap-2">
+                <h3 className="text-base font-semibold">{project.title}</h3>
+
+                <div className="flex gap-3 text-sm text-gray-700">
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="underline"
+                    >
+                      GitHub
+                    </a>
+                  )}
+
+                  {project.demo && (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="underline"
+                    >
+                      Live Demo
+                    </a>
+                  )}
+                </div>
+              </div>
+
+              <p className="mt-2 text-sm leading-6 text-gray-800">
+                {project.description}
+              </p>
+
+              <ul className="mt-2 list-disc pl-5 text-sm leading-6 text-gray-800">
+                {project.highlights.map((highlight) => (
+                  <li key={highlight}>{highlight}</li>
+                ))}
+              </ul>
+
+              <p className="mt-2 text-sm text-gray-700">
+                <span className="font-semibold">Tech Stack:</span>{" "}
+                {project.techStack.join(", ")}
+              </p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-8">
+        <h2 className="border-b border-gray-200 pb-2 text-xl font-semibold">
+          Education
+        </h2>
+
+        <div className="mt-4 space-y-4">
+          {education.map((edu) => (
+            <article key={`${edu.institution}-${edu.area}-${edu.endDate}`}>
+              <h3 className="text-base font-semibold">
+                {edu.studyType} in {edu.area}
+              </h3>
+              <p className="mt-1 text-sm text-gray-800">{edu.institution}</p>
+              <p className="mt-1 text-sm text-gray-700">
+                {edu.startDate} - {edu.endDate}
+              </p>
+            </article>
+          ))}
+        </div>
+      </section>
+    </main>
+  );
+}

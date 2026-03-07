@@ -106,4 +106,4 @@ export const resumeData = {
       image: "/images/vehicle-system.png",
     },
   ],
-};
+} as const;
