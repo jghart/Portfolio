@@ -57,7 +57,7 @@ const Skills = () => {
           className="text-3xl font-bold tracking-tight mb-8 flex items-center gap-2"
         >
           <Wrench className="text-primary" />
-          Technical Arsenal
+          Technical Skills
         </motion.h2>
 
         <div className="grid md:grid-cols-3 gap-8">

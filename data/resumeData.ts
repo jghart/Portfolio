@@ -1,83 +1,109 @@
+import { Github, Linkedin, Mail, MapPin } from "lucide-react";
+
 export const resumeData = {
   basics: {
-    name: "Joe Ghart", // Replace with your actual name
-    label: "Full Stack Developer",
-    email: "appiahjoe88@gmail.com",
-    phone: "647-XXX-XXXX", // Toronto/GTA Area Code
-    website: "https://yourportfolio.com",
-    location: "Toronto, ON",
-    summary: "Dedicated Full Stack Developer focused on building scalable web solutions and AI-integrated applications. Passionate about clean code, user-centric design, and solving complex problems with modern technology.",
+    name: "Joe Ghart",
+    title: "Full-Stack Developer",
+    description:
+      "Full-Stack Developer focused on building responsive web applications, backend systems, and practical business solutions using React, Next.js, Laravel, Java, and SQL.",
+    email: "your-email@example.com",
+    location: "Toronto, Ontario, Canada",
+    website: "https://your-real-portfolio-url.com",
+    summary:
+      "I am a Full-Stack Developer with experience building modern web applications and backend-driven systems. My work includes responsive frontend development, REST API integration, database design, and full project implementation using technologies such as React, Next.js, Laravel, Java, Spring Boot, and SQL. I enjoy creating clean, efficient, and user-focused solutions that solve real business problems.",
     profiles: [
       {
-        network: "LinkedIn",
-        url: "www.linkedin.com/in/jg-devoloper",
+        network: "GitHub",
+        username: "jghart",
+        url: "https://github.com/jghart",
+        icon: Github,
       },
       {
-        network: "GitHub",
-        url: "https://github.com/jghart",
-      }
-    ]
+        network: "LinkedIn",
+        username: "jg-developer",
+        url: "https://www.linkedin.com/in/jg-developer",
+        icon: Linkedin,
+      },
+      {
+        network: "Email",
+        username: "appiahjoe88@gmail.com",
+        url: "mailto:your-email@example.com",
+        icon: Mail,
+      },
+    ],
   },
+
+  education: [
+    {
+      institution: "Humber Polytechnic",
+      area: "Software Development",
+      studyType: "Diploma",
+      startDate: "2024",
+      endDate: "2026",
+    },
+  ],
+
   skills: [
     {
       category: "Frontend",
-      items: ["React", "Next.js", "TypeScript", "Tailwind CSS"]
+      items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "JavaScript"],
     },
     {
       category: "Backend",
-      items: ["Node.js", "Express", "Laravel", "MongoDB", "MySQL", "PHP"]
+      items: ["Laravel", "Java", "Spring Boot", "REST APIs", "PHP"],
     },
     {
-      category: "Tools & Others",
-      items: ["Git", "Postman", "Vercel", "AI APIs (Gemini/OpenAI)"]
-    }
+      category: "Database",
+      items: ["MySQL", "Oracle", "SQL Server", "PostgreSQL"],
+    },
+    {
+      category: "Tools",
+      items: ["Git", "GitHub", "Postman", "VS Code", "Figma"],
+    },
   ],
+
   projects: [
     {
-      title: "AI-Powered Resume Analyzer",
-      description: "Engineered a client-side application that parses user resumes and evaluates them against targeted job descriptions. Integrated Puter.js for seamless cloud execution and leveraged AI APIs to generate real-time, actionable ATS (Applicant Tracking System) optimization feedback, helping candidates improve their match rates.",
-      tech: ["React", "React Router", "Puter.js", "Tailwind CSS", "Gemini AI"],
-      link: "https://your-demo-link.com", // Replace with your Vercel/Puter link when ready
-      github: "https://github.com/yourusername/resume-analyzer", // Replace with your GitHub URL
-      featured: true,
-      imageUrl: "/images/resume-analyzer.jpg" // Remember to add this image later!
-    },
-    {
       title: "Portfolio Website",
-      description: "A high-performance, responsive portfolio featuring a data-driven architecture and a print-optimized resume engine.",
-      tech: ["Next.js", "TypeScript", "Tailwind CSS"],
-      link: "#",
-      github: "https://github.com/yourusername/portfolio",
-      featured: true
+      description:
+        "A modern personal portfolio built with Next.js, TypeScript, and Tailwind CSS to showcase projects, technical skills, and contact information in a clean recruiter-friendly layout.",
+      highlights: [
+        "Built with App Router and reusable UI components",
+        "Responsive design optimized for desktop and mobile",
+        "Improved presentation of projects and technical profile",
+      ],
+      techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
+      github: "https://github.com/jghart/Portfolio",
+      demo: "https://your-live-site-url.com",
+      image: "/images/portfolio.png",
     },
     {
-      title: "Yoghurt E-Commerce Platform",
-      description: "Developing a modern, high-performance business website for a local yoghurt brand. Architected with a component-driven React frontend to ensure a seamless and responsive user experience across all devices.",
-      tech: ["React", "JavaScript", "Tailwind CSS", "Node.js"],
-      link: "#",
-      github: "https://github.com/yourusername/yoghurt-app",
-      featured: true,
-      imageUrl: "/images/yoghurt-site.jpg"
+      title: "Student Program Management System",
+      description:
+        "A Laravel-based system for managing students and programs with relational models, migrations, seeders, and structured CRUD operations.",
+      highlights: [
+        "Designed Student and Program models with relationships",
+        "Implemented database migrations and seeders",
+        "Built maintainable backend structure for academic data management",
+      ],
+      techStack: ["Laravel", "PHP", "MySQL", "Blade"],
+      github: "https://github.com/your-real-repo",
+      demo: "",
+      image: "/images/student-program.png",
     },
     {
-      title: "Mobile Capstone Application",
-      description: "Collaborating within an Agile team of 6 developers to build a comprehensive mobile application. Managing state, navigating complex UI challenges, and integrating cross-platform features.",
-      tech: ["React Native", "TypeScript", "Git", "Agile/Scrum"],
-      link: "#",
-      github: "https://github.com/yourusername/capstone",
-      featured: true,
-      imageUrl: "/images/capstone-app.jpg"
-    }
+      title: "Vehicle Maintenance & Service Management System",
+      description:
+        "A business-oriented service management platform for handling customer records, vehicle servicing, scheduling, invoicing, payments, inventory, and reporting.",
+      highlights: [
+        "Designed modules for customer, vehicle, and service management",
+        "Integrated backend APIs and database workflows",
+        "Focused on real-world business process automation",
+      ],
+      techStack: ["JavaFX", "Spring Boot", "Oracle", "Spring Security"],
+      github: "https://github.com/your-real-repo",
+      demo: "",
+      image: "/images/vehicle-system.png",
+    },
   ],
-  education: [
-    {
-      institution: "College in Etobicoke",
-      area: "Computer Programming",
-      studyType: "Diploma",
-      location: "Etobicoke, ON",
-      endDate: "May 2026"
-    }
-  ]
 };
-
-export type ResumeDataType = typeof resumeData;
