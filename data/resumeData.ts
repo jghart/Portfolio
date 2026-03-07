@@ -38,7 +38,7 @@ export const resumeData = {
       institution: "Humber Polytechnic",
       area: "Computer Programming / Software Development",
       studyType: "Diploma",
-      startDate: "2023",
+      startDate: "2024",
       endDate: "2026",
     },
   ],
