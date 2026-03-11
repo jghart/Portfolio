@@ -6,7 +6,7 @@ export const resumeData = {
     title: "Full-Stack Developer",
     description:
       "I build responsive web applications, backend systems, and practical business solutions using React, Next.js, Laravel, Java, and SQL.",
-    email: "your-email@example.com",
+    email: "appiahjoe88@gmail.com",
     location: "Toronto, Ontario, Canada",
     website: "https://your-portfolio-url.com",
     summary:
@@ -26,8 +26,8 @@ export const resumeData = {
       },
       {
         network: "Email",
-        username: "your-email@example.com",
-        url: "mailto:your-email@example.com",
+        username: "appiahjoe88@gmail.com",
+        url: "mailto:appiahjoe88@gmail.com",
         icon: Mail,
       },
     ],
