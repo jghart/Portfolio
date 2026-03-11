@@ -70,40 +70,17 @@ button {
   max-width: 1200px;
 }
 
-.bg-background {
-  background-color: var(--background);
-}
-
-.bg-card {
-  background-color: var(--card);
-}
-
-.bg-muted {
-  background-color: var(--muted);
-}
-
-.bg-primary {
-  background-color: var(--primary);
-}
-
-.text-foreground {
-  color: var(--foreground);
-}
-
-.text-muted-foreground {
-  color: var(--muted-foreground);
-}
-
-.text-primary-foreground {
-  color: var(--primary-foreground);
-}
-
-.text-primary {
-  color: var(--primary);
-}
-
-.border-border {
-  border-color: var(--border);
+/* ─── Tailwind v4 CSS variable theme ─────────────────────────── */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
 }
 
 .hero-glow {

@@ -1,5 +1,3 @@
-import { Github, Linkedin, Mail } from "lucide-react";
-
 export const resumeData = {
   basics: {
     name: "Joe Ghart",
@@ -16,19 +14,16 @@ export const resumeData = {
         network: "GitHub",
         username: "jghart",
         url: "https://github.com/jghart",
-        icon: Github,
       },
       {
         network: "LinkedIn",
         username: "jg-developer",
         url: "https://www.linkedin.com/in/jg-developer",
-        icon: Linkedin,
       },
       {
         network: "Email",
         username: "appiahjoe88@gmail.com",
         url: "mailto:appiahjoe88@gmail.com",
-        icon: Mail,
       },
     ],
   },

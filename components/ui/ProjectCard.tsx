@@ -10,8 +10,8 @@ type Project = {
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="group rounded-2xl border border-border bg-card/80 p-6 shadow-sm backdrop-blur transition duration-300 hover:-translate-y-1 hover:shadow-xl">
-      <div className="flex h-full flex-col">
+    <article className="group h-full rounded-2xl border border-border bg-card/80 p-6 shadow-sm backdrop-blur transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+      <div className="flex h-full flex-col justify-between">
         <div>
           <h3 className="text-xl font-semibold tracking-tight transition duration-200 group-hover:text-primary">
             {project.title}
@@ -42,28 +42,30 @@ export default function ProjectCard({ project }: { project: Project }) {
           </div>
         </div>
 
-        <div className="mt-6 flex items-center gap-4 pt-2">
-          {project.github && (
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noreferrer"
-              className="text-sm font-semibold text-primary transition duration-200 hover:underline"
-            >
-              GitHub
-            </a>
-          )}
+        <div className="mt-6 border-t border-border pt-4">
+          <div className="flex items-center gap-4">
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noreferrer"
+                className="text-sm font-semibold text-primary transition duration-200 hover:opacity-80 hover:underline"
+              >
+                GitHub
+              </a>
+            )}
 
-          {project.demo && (
-            <a
-              href={project.demo}
-              target="_blank"
-              rel="noreferrer"
-              className="text-sm font-semibold text-primary transition duration-200 hover:underline"
-            >
-              Live Demo
-            </a>
-          )}
+            {project.demo && (
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noreferrer"
+                className="text-sm font-semibold text-primary transition duration-200 hover:opacity-80 hover:underline"
+              >
+                Live Demo
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </article>

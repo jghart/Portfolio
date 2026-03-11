@@ -8,13 +8,13 @@ export default function Projects() {
   return (
     <section id="projects" className="py-20 sm:py-24">
       <div className="container mx-auto px-6">
-        <Reveal>
+        <Reveal inView>
           <div className="max-w-2xl">
             <p className="text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground">
               Featured Work
             </p>
             <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-              Projects that showcase my technical skills
+              Projects that reflect my full-stack and engineering skills
             </h2>
             <p className="mt-4 text-base leading-7 text-muted-foreground">
               A selection of projects that reflect my experience in full-stack
@@ -25,8 +25,8 @@ export default function Projects() {
         </Reveal>
 
         {featuredProject && (
-          <Reveal delay={0.08}>
-            <article className="mt-12 overflow-hidden rounded-3xl border border-border bg-card/80 shadow-sm backdrop-blur transition duration-300 hover:shadow-xl">
+          <Reveal inView delay={0.08}>
+            <article className="mt-14 overflow-hidden rounded-3xl border border-border bg-card/80 shadow-sm backdrop-blur transition duration-300 hover:-translate-y-1 hover:shadow-xl">
               <div className="grid gap-0 lg:grid-cols-[1.2fr_0.8fr]">
                 <div className="p-8 sm:p-10">
                   <div className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
@@ -96,9 +96,9 @@ export default function Projects() {
                         {featuredProject.title}
                       </h4>
                       <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                        A highlighted project demonstrating practical
-                        architecture, clean implementation, and recruiter-ready
-                        presentation.
+                        A featured build that highlights practical system
+                        design, clean implementation, and real-world full-stack
+                        development.
                       </p>
 
                       <div className="mt-5 flex flex-wrap gap-2">
@@ -122,7 +122,11 @@ export default function Projects() {
         {otherProjects.length > 0 && (
           <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {otherProjects.map((project, index) => (
-              <Reveal key={project.title} delay={0.1 + index * 0.08}>
+              <Reveal
+                key={project.title}
+                inView
+                delay={0.1 + index * 0.08}
+              >
                 <ProjectCard project={project} />
               </Reveal>
             ))}
