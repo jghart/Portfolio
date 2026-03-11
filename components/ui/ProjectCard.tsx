@@ -1,29 +1,30 @@
 type Project = {
   title: string;
   description: string;
-  highlights: string[];
-  techStack: string[];
+  highlights: readonly string[];
+  techStack: readonly string[];
   github?: string;
   demo?: string;
+  image?: string;
 };
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="group rounded-2xl border border-border bg-card p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
+    <article className="group rounded-2xl border border-border bg-card/80 p-6 shadow-sm backdrop-blur transition duration-300 hover:-translate-y-1 hover:shadow-xl">
       <div className="flex h-full flex-col">
         <div>
-          <h3 className="text-xl font-semibold tracking-tight">
+          <h3 className="text-xl font-semibold tracking-tight transition duration-200 group-hover:text-primary">
             {project.title}
           </h3>
 
-          <p className="mt-3 text-sm leading-6 text-muted-foreground">
+          <p className="mt-3 text-sm leading-7 text-muted-foreground">
             {project.description}
           </p>
 
           <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
             {project.highlights.map((item) => (
               <li key={item} className="flex gap-2">
-                <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-primary" />
+                <span className="mt-[8px] h-1.5 w-1.5 rounded-full bg-primary" />
                 <span>{item}</span>
               </li>
             ))}
@@ -33,7 +34,7 @@ export default function ProjectCard({ project }: { project: Project }) {
             {project.techStack.map((tech) => (
               <span
                 key={tech}
-                className="rounded-full bg-muted px-3 py-1 text-xs font-medium text-muted-foreground"
+                className="rounded-full border border-border bg-background px-3 py-1 text-xs font-medium text-muted-foreground transition duration-200 hover:border-primary hover:text-foreground"
               >
                 {tech}
               </span>
@@ -47,7 +48,7 @@ export default function ProjectCard({ project }: { project: Project }) {
               href={project.github}
               target="_blank"
               rel="noreferrer"
-              className="text-sm font-medium text-primary transition hover:underline"
+              className="text-sm font-semibold text-primary transition duration-200 hover:underline"
             >
               GitHub
             </a>
@@ -58,7 +59,7 @@ export default function ProjectCard({ project }: { project: Project }) {
               href={project.demo}
               target="_blank"
               rel="noreferrer"
-              className="text-sm font-medium text-primary transition hover:underline"
+              className="text-sm font-semibold text-primary transition duration-200 hover:underline"
             >
               Live Demo
             </a>
