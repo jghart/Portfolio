@@ -73,7 +73,7 @@ export const resumeData = {
       image: "/images/portfolio.png",
     },
     {
-      title: "Student Program Management System",
+      title: "Student",
       description:
         "A Laravel-based academic management application for handling students, programs, relationships, and structured CRUD operations.",
       highlights: [
