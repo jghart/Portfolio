@@ -1,9 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Menu, Moon, Sun, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useTheme } from "next-themes";
 
 const navItems = [
   { label: "About", href: "#about" },
@@ -14,13 +13,9 @@ const navItems = [
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  const { theme, setTheme } = useTheme();
-
   useEffect(() => {
-    setMounted(true);
 
     const handleScroll = () => {
       setScrolled(window.scrollY > 12);
@@ -60,51 +55,9 @@ export default function Navbar() {
             </a>
           ))}
 
-          <button
-            type="button"
-            aria-label="Toggle theme"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="rounded-xl border border-border bg-background/70 p-2 text-muted-foreground transition hover:bg-muted hover:text-foreground"
-          >
-            {mounted ? (
-              theme === "dark" ? (
-                <Sun className="h-4 w-4" />
-              ) : (
-                <Moon className="h-4 w-4" />
-              )
-            ) : (
-              <span className="block h-4 w-4" />
-            )}
-          </button>
-
-          <a
-            href="/resume.pdf"
-            target="_blank"
-            rel="noreferrer"
-            className="rounded-xl bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition duration-200 hover:scale-[1.02] hover:opacity-90 active:scale-[0.98]"
-          >
-            Resume
-          </a>
         </nav>
 
         <div className="flex items-center gap-3 md:hidden">
-          <button
-            type="button"
-            aria-label="Toggle theme"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="rounded-xl border border-border bg-background/70 p-2 text-muted-foreground transition hover:bg-muted hover:text-foreground"
-          >
-            {mounted ? (
-              theme === "dark" ? (
-                <Sun className="h-4 w-4" />
-              ) : (
-                <Moon className="h-4 w-4" />
-              )
-            ) : (
-              <span className="block h-4 w-4" />
-            )}
-          </button>
-
           <button
             type="button"
             aria-label={isOpen ? "Close menu" : "Open menu"}
@@ -131,15 +84,6 @@ export default function Navbar() {
               </a>
             ))}
 
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noreferrer"
-              onClick={() => setIsOpen(false)}
-              className="mt-3 inline-flex w-fit rounded-xl bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition duration-200 hover:scale-[1.02] hover:opacity-90 active:scale-[0.98]"
-            >
-              Resume
-            </a>
           </nav>
         </div>
       )}

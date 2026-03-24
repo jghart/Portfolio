@@ -3,54 +3,21 @@ import { resumeData } from "@/data/resumeData";
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
-  const github = resumeData.basics.profiles.find(
-    (profile) => profile.network === "GitHub"
-  );
-
-  const linkedin = resumeData.basics.profiles.find(
-    (profile) => profile.network === "LinkedIn"
-  );
-
   return (
-    <footer className="border-t border-border py-8">
-      <div className="container mx-auto flex flex-col items-center justify-between gap-4 px-6 text-center sm:flex-row sm:text-left">
+    <footer className="py-12 relative z-10 w-full overflow-hidden">
+      <div className="container mx-auto flex flex-col items-center justify-between gap-6 px-6 text-center md:flex-row md:text-left">
         <div>
-          <p className="text-sm font-medium text-foreground">
+          <p className="text-sm font-medium text-white/60">
             © {currentYear} {resumeData.basics.name}
           </p>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Built with Next.js, TypeScript, and Tailwind CSS.
+          <p className="mt-1 text-xs text-white/30">
+            Built with Next.js, Framer Motion & Tailwind CSS.
           </p>
         </div>
 
-        <div className="flex items-center gap-5">
-          {github && (
-            <a
-              href={github.url}
-              target="_blank"
-              rel="noreferrer"
-              className="text-sm font-medium text-muted-foreground transition hover:text-foreground"
-            >
-              GitHub
-            </a>
-          )}
-
-          {linkedin && (
-            <a
-              href={linkedin.url}
-              target="_blank"
-              rel="noreferrer"
-              className="text-sm font-medium text-muted-foreground transition hover:text-foreground"
-            >
-              LinkedIn
-            </a>
-          )}
-
-          <a
-            href={`mailto:${resumeData.basics.email}`}
-            className="text-sm font-medium text-muted-foreground transition hover:text-foreground"
-          >
-            Email
+        <div className="flex items-center flex-wrap justify-center gap-6 sm:gap-8">
+          <a href="#hero" className="text-xs font-bold tracking-[0.15em] uppercase text-white/30 hover:text-white transition-colors">
+            Back to Top ↑
           </a>
         </div>
       </div>

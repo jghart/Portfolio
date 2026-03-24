@@ -1,137 +1,67 @@
-import Reveal from "@/components/ui/Reveal";
-import ProjectCard from "@/components/ui/ProjectCard";
+"use client";
+
+import { motion } from "framer-motion";
 import { resumeData } from "@/data/resumeData";
 
 export default function Projects() {
-  const [featuredProject, ...otherProjects] = resumeData.projects;
-
   return (
-    <section id="projects" className="py-20 sm:py-24">
+    <section id="projects" className="py-24 sm:py-32 relative">
       <div className="container mx-auto px-6">
-        <Reveal inView>
-          <div className="max-w-2xl">
-            <p className="text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              Featured Work
-            </p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-              Projects that reflect my full-stack and engineering skills
-            </h2>
-            <p className="mt-4 text-base leading-7 text-muted-foreground">
-              A selection of projects that reflect my experience in full-stack
-              development, backend systems, database-driven applications, and
-              practical software solutions.
-            </p>
-          </div>
-        </Reveal>
+        
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5 }}
+          className="flex items-center gap-4 mb-16 lg:mb-24"
+        >
+          <span className="font-display text-sm font-bold text-white/40 tracking-[0.2em]">04</span>
+          <div className="h-px w-12 bg-white/20" />
+          <span className="font-display text-sm font-bold text-white/40 tracking-[0.2em] uppercase">Projects</span>
+        </motion.div>
 
-        {featuredProject && (
-          <Reveal inView delay={0.08}>
-            <article className="mt-14 overflow-hidden rounded-3xl border border-border bg-card/80 shadow-sm backdrop-blur transition duration-300 hover:-translate-y-1 hover:shadow-xl">
-              <div className="grid gap-0 lg:grid-cols-[1.2fr_0.8fr]">
-                <div className="p-8 sm:p-10">
-                  <div className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
-                    Featured Project
-                  </div>
-
-                  <h3 className="mt-5 text-2xl font-bold tracking-tight sm:text-3xl">
-                    {featuredProject.title}
-                  </h3>
-
-                  <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground">
-                    {featuredProject.description}
-                  </p>
-
-                  <ul className="mt-6 space-y-3 text-sm text-muted-foreground">
-                    {featuredProject.highlights.map((item) => (
-                      <li key={item} className="flex gap-3">
-                        <span className="mt-[8px] h-1.5 w-1.5 rounded-full bg-primary" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    {featuredProject.techStack.map((tech) => (
-                      <span
-                        key={tech}
-                        className="rounded-full border border-border bg-background px-3 py-1 text-xs font-medium text-muted-foreground"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="mt-8 flex flex-wrap gap-4">
-                    {featuredProject.github && (
-                      <a
-                        href={featuredProject.github}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition duration-200 hover:scale-[1.02] hover:opacity-90 active:scale-[0.98]"
-                      >
-                        View GitHub
-                      </a>
-                    )}
-
-                    {featuredProject.demo && (
-                      <a
-                        href={featuredProject.demo}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="rounded-xl border border-border bg-background px-5 py-3 text-sm font-semibold transition duration-200 hover:scale-[1.02] hover:bg-muted active:scale-[0.98]"
-                      >
-                        Live Demo
-                      </a>
-                    )}
-                  </div>
-                </div>
-
-                <div className="relative min-h-[260px] border-t border-border bg-gradient-to-br from-primary/10 via-transparent to-transparent lg:min-h-full lg:border-l lg:border-t-0">
-                  <div className="flex h-full items-center justify-center p-8">
-                    <div className="w-full max-w-sm rounded-2xl border border-border bg-background/80 p-6 shadow-lg backdrop-blur">
-                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-                        Project Spotlight
-                      </p>
-                      <h4 className="mt-3 text-lg font-semibold text-foreground">
-                        {featuredProject.title}
-                      </h4>
-                      <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                        A featured build that highlights practical system
-                        design, clean implementation, and real-world full-stack
-                        development.
-                      </p>
-
-                      <div className="mt-5 flex flex-wrap gap-2">
-                        {featuredProject.techStack.slice(0, 4).map((tech) => (
-                          <span
-                            key={tech}
-                            className="rounded-full bg-muted px-3 py-1 text-xs font-medium text-muted-foreground"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
+        <ul className="flex flex-col w-full relative z-10">
+          {resumeData.projects.map((p, i) => (
+            <motion.li 
+              key={p.title}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.7, delay: i * 0.1, ease: "easeOut" }}
+              className="group py-12 sm:py-16 flex flex-col md:flex-row md:items-center justify-between border-t border-white/5 first:border-t-0"
+            >
+              <div className="flex flex-col">
+                <h3 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold font-display tracking-tight text-white/30 group-hover:text-white group-hover:translate-x-4 lg:group-hover:translate-x-8 transition-all duration-500 cursor-default">
+                  {p.title}
+                </h3>
+                <p className="mt-4 text-white/40 hover:text-white/80 transition-colors duration-500 max-w-xl text-lg lg:text-xl">
+                  {p.description}
+                </p>
+                <div className="mt-6 flex items-center gap-6 opacity-50 group-hover:opacity-100 transition-opacity duration-500">
+                  {p.demo && (
+                    <a href={p.demo} target="_blank" rel="noreferrer" className="text-sm font-bold tracking-[0.15em] uppercase text-white/60 hover:text-white transition-colors">
+                      Live Demo ↗
+                    </a>
+                  )}
+                  {p.github && (
+                    <a href={p.github} target="_blank" rel="noreferrer" className="text-sm font-bold tracking-[0.15em] uppercase text-white/60 hover:text-white transition-colors">
+                      Preview Code ↗
+                    </a>
+                  )}
                 </div>
               </div>
-            </article>
-          </Reveal>
-        )}
-
-        {otherProjects.length > 0 && (
-          <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {otherProjects.map((project, index) => (
-              <Reveal
-                key={project.title}
-                inView
-                delay={0.1 + index * 0.08}
-              >
-                <ProjectCard project={project} />
-              </Reveal>
-            ))}
-          </div>
-        )}
+              
+              <div className="mt-6 md:mt-0 flex flex-wrap gap-2 md:justify-end shrink-0 opacity-50 group-hover:opacity-100 transition-opacity duration-500">
+                {p.techStack.map(t => (
+                  <span key={t} className="text-xs sm:text-sm font-medium px-4 py-2 rounded-full border border-white/5 bg-white/5 text-white/60 hover:border-white/20 hover:text-white transition-all duration-500">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </motion.li>
+          ))}
+        </ul>
+        
       </div>
     </section>
   );
