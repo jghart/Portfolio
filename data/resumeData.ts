@@ -73,32 +73,19 @@ export const resumeData = {
       image: "/images/portfolio.png",
     },
     {
-      title: "Student",
+      title: "Resumind — AI Resume Analyzer",
       description:
-        "A Laravel-based academic management application for handling students, programs, relationships, and structured CRUD operations.",
+        "An AI-powered platform that provides instant, structured feedback on resumes against specific job descriptions, featuring ATS scoring, actionable insights, and an integrated Kanban job application tracker.",
       highlights: [
-        "Designed Student and Program models with proper relationships",
-        "Implemented migrations and seeders for database setup",
-        "Built a structured backend workflow for managing academic records",
+        "Engineered a fully serverless, client-side architecture leveraging Puter.js for authentication, cloud file storage, and Claude AI integration",
+        "Implemented real-time client-side PDF processing and automated thumbnail generation using pdfjs-dist",
+        "Built an interactive drag-and-drop Kanban board for tracking job applications using Zustand for state management",
       ],
-      techStack: ["Laravel", "PHP", "MySQL", "Blade"],
-      github: "https://github.com/your-real-repo",
-      demo: "",
-      image: "/images/student-program.png",
-    },
-    {
-      title: "Vehicle Maintenance & Service Management System",
-      description:
-        "A business-oriented platform for managing customer records, vehicle servicing, scheduling, invoicing, payments, and reporting.",
-      highlights: [
-        "Designed modules for customer, vehicle, and service management",
-        "Integrated backend APIs with database workflows",
-        "Focused on real-world business process automation and usability",
-      ],
-      techStack: ["JavaFX", "Spring Boot", "Oracle", "Spring Security"],
-      github: "https://github.com/your-real-repo",
-      demo: "",
-      image: "/images/vehicle-system.png",
-    },
+      techStack: ["React Router v7", "TypeScript", "Tailwind CSS", "Zustand", "Puter.js", "Claude AI"],
+      github: "https://github.com/jghart/ai-resume-analyzer",
+      demo: "https://ai-resume-analyzer-eight-kohl.vercel.app/",
+      image: "/images/resumind.png",
+    }
+    ,
   ],
 } as const;
