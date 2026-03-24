@@ -36,12 +36,12 @@ export default function Navbar() {
       }`}
     >
       <div className="container mx-auto flex items-center justify-between px-6 py-4">
-        <Link
-          href="/"
+        <a
+          href="#hero"
           className="text-lg font-semibold tracking-tight transition hover:text-primary"
         >
           Joe Ghart
-        </Link>
+        </a>
 
         <nav className="hidden items-center gap-7 md:flex">
           {navItems.map((item) => (
