@@ -3,10 +3,8 @@ export const resumeData = {
     name: "Joe Ghart",
     title: "Full-Stack Developer",
     description:
-      "I build responsive web applications, backend systems, and practical business solutions using React, Next.js, Laravel, Java, and SQL.",
+      "I build responsive web applications, backend systems, and practical business solutions.",
     email: "appiahjoe88@gmail.com",
-    location: "Toronto, Ontario, Canada",
-    website: "https://your-portfolio-url.com",
     summary:
       "I am a Full-Stack Developer focused on building clean, reliable, and user-friendly software. My experience includes frontend development, REST API integration, database design, and backend-driven applications using technologies such as React, Next.js, Laravel, Java, Spring Boot, and SQL. I enjoy creating practical solutions that solve real business problems and deliver a polished user experience.",
     profiles: [
@@ -27,16 +25,6 @@ export const resumeData = {
       },
     ],
   },
-
-  education: [
-    {
-      institution: "Humber Polytechnic",
-      area: "Computer Programming / Software Development",
-      studyType: "Diploma",
-      startDate: "2024",
-      endDate: "2026",
-    },
-  ],
 
   skills: [
     {
